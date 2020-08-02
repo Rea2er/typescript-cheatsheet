@@ -12,7 +12,9 @@ A set of TypeScript related notes used for quick reference. The cheatsheet conta
 **&nbsp;&nbsp;&nbsp;** **5. Array:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Array`](#array)**.\
 **&nbsp;&nbsp;&nbsp;** **6. Function Type:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Function Type`](#function-type)**.\
 **&nbsp;&nbsp;&nbsp;** **7. Type Assertion:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Type Assertion`](#type-assertion)**.\
-**&nbsp;&nbsp;&nbsp;** **8. Alias:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Alias`](#alias)**.
+**&nbsp;&nbsp;&nbsp;** **8. Alias:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Alias`](#alias)**.\
+**&nbsp;&nbsp;&nbsp;** **9. Enum:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Enum`](#enum)**.\
+**&nbsp;&nbsp;&nbsp;** **10. Class Modifiers:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Class Modifiers`](#class-modifiers)**.
 
 ## String
 
@@ -274,4 +276,58 @@ function getSex(s: sex): string {
   return s;
 }
 getSex("man");
+```
+
+## Enum
+
+```typescript
+enum Days {
+  Sun,
+  Mon,
+  Tue,
+  Wed,
+  Thu,
+  Fri,
+  Sat,
+}
+```
+
+## Class Modifiers
+
+Default modifier is public \
+Sex attribut of Person class can only access by person object within Person class
+
+```typescript
+class Person {
+  name = "Alice";
+  private age: 18;
+  protected sex: "man";
+  say() {
+    console.log("Hi");
+    console.log(this.sex);
+  }
+}
+
+const person = new Person();
+person.name;
+person.say();
+```
+
+```typescript
+class Child extends Person {
+  callParent() {
+    super.say();
+    super.name;
+    super.sex;
+  }
+  static test() {
+    console.log("test");
+  }
+}
+
+const child = new Child();
+child.name;
+child.say();
+child.callParent();
+Child.test();
 ```
