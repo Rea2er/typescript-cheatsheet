@@ -12,9 +12,10 @@ A set of TypeScript related notes used for quick reference. The cheatsheet conta
 **&nbsp;&nbsp;&nbsp;** **5. Array:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Array`](#array)**.\
 **&nbsp;&nbsp;&nbsp;** **6. Function Type:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Function Type`](#function-type)**.\
 **&nbsp;&nbsp;&nbsp;** **7. Type Assertion:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Type Assertion`](#type-assertion)**.\
-**&nbsp;&nbsp;&nbsp;** **8. Alias:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Alias`](#alias)**.\
-**&nbsp;&nbsp;&nbsp;** **9. Enum:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Enum`](#enum)**.\
-**&nbsp;&nbsp;&nbsp;** **10. Class Modifiers:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Class Modifiers`](#class-modifiers)**.
+**&nbsp;&nbsp;&nbsp;** **8. Alias:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Alias`](#alias)**.\
+**&nbsp;&nbsp;&nbsp;** **9. Enum:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Enum`](#enum)**.\
+**&nbsp;&nbsp;&nbsp;** **10. Class Modifiers:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Class Modifiers`](#class-modifiers)**.\
+**&nbsp;&nbsp;&nbsp;** **11. Generic Type:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Generic Type`](#generic-type)**.
 
 ## String
 
@@ -329,5 +330,35 @@ const child = new Child();
 child.name;
 child.say();
 child.callParent();
+// call test method without create the child object
 Child.test();
+```
+
+## Generic Type
+
+```typescript
+function createArray<T>(length: number, value: T): Array<T> {
+  let arr = [];
+  for (let i = 0; i < length; i++) {
+    arr[i] = value;
+  }
+  return arr;
+}
+
+let str_arr: string[] = createArray<string>(3, "1");
+let num_arr: number[] = createArray(3, 1);
+```
+
+```typescript
+interface IcreateArry {
+  <T>(name: string, value: T): Array<T>;
+}
+
+let func: IcreateArry;
+func = function <T>(name: string, value: T): Array<T> {
+  return [];
+};
+
+let str_arr_i: string[] = func("Alice", "1");
+let num_arr_i: number[] = func("Bob", 1);
 ```
