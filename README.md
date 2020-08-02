@@ -4,7 +4,11 @@ A set of TypeScript related notes used for quick reference. The cheatsheet conta
 
 ## Contents
 
-**&nbsp;&nbsp;&nbsp;** **1. Types:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`String`](#string)**, **[`Number`](#number)**, **[`Boolean`](#boolean)**, **[`Undefined`](#undefine)**, **[`Null`](#null)**, **[`Void`](#void)**, **[`Any`](#any)**.
+**&nbsp;&nbsp;&nbsp;** **1. Basic Assign Types:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`String`](#string)**, **[`Number`](#number)**, **[`Boolean`](#boolean)**, **[`Undefined`](#undefine)**, **[`Null`](#null)**.\
+**&nbsp;&nbsp;&nbsp;** **2. Any:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Any`](#any)**.\
+**&nbsp;&nbsp;&nbsp;** **3. Void Function Type:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Void`](#void)**.\
+**&nbsp;&nbsp;&nbsp;** **3. Union:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Union`](#union)**.\
+**&nbsp;&nbsp;&nbsp;** **4. Interface:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Interface`](#interface)**.
 
 ## String
 
@@ -39,14 +43,6 @@ const un: undefined = undefined;
 const nul: null = null;
 ```
 
-## Void
-
-```typescript
-const fun = function (): void {};
-
-const fun_arrow = (): void => {};
-```
-
 ## Any
 
 ```typescript
@@ -57,4 +53,75 @@ num = "3";
 let str;
 str = 1;
 str = "3";
+```
+
+## Void
+
+```typescript
+const fun = function (): void {};
+
+const fun_arrow = (): void => {};
+```
+
+## Union
+
+```typescript
+let diff_type: string | number = "hello";
+diff_type = 10;
+```
+
+## Interface
+
+```typescript
+interface Istate {
+  name: string;
+  age: number;
+}
+
+let obj: Istate;
+obj = {
+  name: "Bob",
+  age: 23,
+};
+```
+
+Mark attribute with keyword `readonly`
+
+```typescript
+interface Istate {
+  name: string;
+  readonly age: number;
+}
+```
+
+Define attribute of interface with `?` mark
+
+```typescript
+interface Istate {
+  name: string;
+  age?: number;
+}
+
+let obj: Istate;
+obj = {
+  name: "Bob",
+};
+```
+
+Define unknown attribute for future use
+
+```typescript
+interface Istate {
+  name: string;
+  age?: number;
+  [propName: string]: any;
+}
+
+let obj: Istate;
+obj = {
+  name: "Bob",
+  age: 23,
+  sex: "man",
+  isMarry: true,
+};
 ```
