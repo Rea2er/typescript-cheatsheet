@@ -10,8 +10,9 @@ A set of TypeScript related notes used for quick reference. The cheatsheet conta
 **&nbsp;&nbsp;&nbsp;** **3. Union:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Union`](#union)**.\
 **&nbsp;&nbsp;&nbsp;** **4. Interface:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Interface`](#interface)**.\
 **&nbsp;&nbsp;&nbsp;** **5. Array:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Array`](#array)**.\
-**&nbsp;&nbsp;&nbsp;** **6. Function Type:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Function Type`](#functiontype)**.\
-**&nbsp;&nbsp;&nbsp;** **7. Type Assertion:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Type Assertion`](#typeassertion)**.
+**&nbsp;&nbsp;&nbsp;** **6. Function Type:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Function Type`](#function-type)**.\
+**&nbsp;&nbsp;&nbsp;** **7. Type Assertion:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Type Assertion`](#type-assertion)**.\
+**&nbsp;&nbsp;&nbsp;** **8. Alias:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** **[`Alias`](#alias)**.
 
 ## String
 
@@ -242,4 +243,35 @@ function getAssertOne(name: string | number) {
 function getAssertTwo(name: string | number) {
   return (name as string).length;
 }
+```
+
+## Alias
+
+```typescript
+type strType = string | number;
+let str: strType = "10";
+str = 10;
+
+interface ItypeOne {
+  name: string;
+}
+
+interface ItypeTwo {
+  age: number;
+}
+
+type obj_type = ItypeOne | ItypeTwo;
+let obj: obj_type = { name: "Alice" };
+obj = { age: 23 };
+obj = { name: "Alice", age: 23 };
+```
+
+Restricted parameter
+
+```typescript
+type sex = "man" | "woman";
+function getSex(s: sex): string {
+  return s;
+}
+getSex("man");
 ```
